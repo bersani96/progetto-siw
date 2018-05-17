@@ -10,20 +10,40 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
+
+import apicella.bersani.repository.AllievoRepository;
 
 class AllievoTest {
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
-	private static EntityTransaction tx;
+	private EntityTransaction tx;
 	
+	@BeforeClass
+	public static void init()
+	{
+		emf = Persistence.createEntityManagerFactory("progetto-siw-test-unit");
+		em = emf.createEntityManager(); 
+	}
 	
+	@AfterClass
+	public static void close()
+	{
+		if(em!=null)
+			em.close();
+		if(emf!=null)
+			emf.close();
+	}
 	
 	@Test
 	public void test_singleton() throws Exception{
 		emf = Persistence.createEntityManagerFactory("progetto-siw-test-unit");
 		em = emf.createEntityManager(); 
 		tx = em.getTransaction();
+		AllievoRepository repo = new AllievoRepository(em);
+		
 		tx.begin();
 		Allievo singleton = new Allievo();
 		singleton.setNome("nome");
@@ -32,7 +52,7 @@ class AllievoTest {
 		singleton.setTelefono("123456789");
 		singleton.setDataNascita(new Date(1996,01,01));
 		singleton.setLuogoNascita("Roma");
-		em.persist(singleton);
+		repo.save(singleton);
 		tx.commit();
 		
 		List<Allievo> result = em.createNamedQuery("findAllAllievi").getResultList();
@@ -43,5 +63,5 @@ class AllievoTest {
 			emf.close();
 	}
 		
-	}
+}
 
