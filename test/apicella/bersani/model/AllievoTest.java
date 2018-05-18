@@ -14,20 +14,20 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import apicella.bersani.repository.AllievoRepository;
+import apicella.bersani.repository.AllievoJpaRepository;
 
 class AllievoTest {
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private EntityTransaction tx;
-	private static AllievoRepository repo;
+	private static AllievoJpaRepository repo;
 	
 	@BeforeAll
 	public static void init()
 	{
 		emf = Persistence.createEntityManagerFactory("progetto-siw-test-unit");
 		em = emf.createEntityManager(); 
-		repo = new AllievoRepository(em);
+		repo = new AllievoJpaRepository(em);
 	}
 	
 	@AfterAll
@@ -63,8 +63,5 @@ class AllievoTest {
 		assertEquals(0, result.size());
 	}
 	
-	
-	
-		
 }
 

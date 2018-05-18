@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 
 import apicella.bersani.model.Allievo;
 
-public class AllievoRepository implements Repository<Allievo> {
+public class AllievoJpaRepository implements Repository<Allievo> {
 
 	private EntityManager em;
 	
-	public AllievoRepository(EntityManager em) {
+	public AllievoJpaRepository(EntityManager em) {
 		this.em = em;
 	}
 
