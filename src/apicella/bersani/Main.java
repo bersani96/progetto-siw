@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Main {
 	
 	@RequestMapping("/")
-	protected String showStructure() {
+	protected String showHomePage() {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("progetto-siw-test-unit");
 		EntityManager em = emf.createEntityManager();
 		
 		em.close();
 		emf.close();
 		
-		return "struttura";
+		return "index";
 	}
 
 }
