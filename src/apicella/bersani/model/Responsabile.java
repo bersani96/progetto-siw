@@ -8,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+
+import org.apache.commons.codec.digest.DigestUtils;
 
 @Entity
 @NamedQuery(name = "findAllResponsabile", query = "FROM Responsabile r")
@@ -17,6 +20,7 @@ public class Responsabile {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
 	
 	@Column(nullable=false,unique=true)
 	private String email;
@@ -32,12 +36,8 @@ public class Responsabile {
 	public void setCentro(Centro centro) {
 		this.centro = centro;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
+	
 	public String getEmail() {
 		return email;
 	}
@@ -48,9 +48,14 @@ public class Responsabile {
 		return password;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = DigestUtils.sha1Hex(password);
 	}
-	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -87,6 +92,12 @@ public class Responsabile {
 			return false;
 		return true;
 	}
+	
+	public boolean checkLogin(String password)
+	{
+		return this.getPassword().equals(password);
+	}
+	
 	
 	
 }

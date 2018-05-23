@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>HOME</title>
+<title>Logged</title>
 </head>
 <body>
-
-<a href="login">Login</a>
-
+Ciao ${responsabile.email }
 </body>
 </html>

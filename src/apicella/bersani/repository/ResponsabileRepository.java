@@ -29,6 +29,18 @@ private EntityManager em;
 	public List<Responsabile> findAll() {
 		return em.createNamedQuery("findAllResponsabile").getResultList();
 	}
+	
+	public Responsabile findByEmail(String email) {
+		Responsabile result;
+		try{
+			result =  em.createQuery("FROM Responsabile r WHERE r.email = '" + email + "'",Responsabile.class).getSingleResult();
+		}catch(Exception e)
+		{
+			result = null;
+		}
+		
+		return result;
+	}
 
 	@Override
 	public void update(Responsabile object) {
