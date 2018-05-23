@@ -14,20 +14,20 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import apicella.bersani.repository.ResponsabileRepository;
+import apicella.bersani.repository.JpaRepository;
 
 class ResponsabileTest {
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private EntityTransaction tx;
-	private static ResponsabileRepository repo;
+	private static JpaRepository repo;
 	
 	@BeforeAll
 	public static void init()
 	{
 		emf = Persistence.createEntityManagerFactory("progetto-siw-test-unit");
 		em = emf.createEntityManager(); 
-		repo = new ResponsabileRepository(em);
+		repo = new JpaRepository(em,Responsabile.class);
 	}
 	
 	@AfterAll
@@ -65,7 +65,7 @@ class ResponsabileTest {
 		
 		List<Responsabile> result = repo.findAll();
 		assertEquals(1,result.size());
-		
+		assertEquals(singleton.getEmail(),result.get(0).getEmail());
 		tx.commit();
 
 	}

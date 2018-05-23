@@ -14,20 +14,20 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import apicella.bersani.repository.AllievoJpaRepository;
+import apicella.bersani.repository.JpaRepository;
 
 class AllievoTest {
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private EntityTransaction tx;
-	private static AllievoJpaRepository repo;
+	private static JpaRepository repo;
 	
 	@BeforeAll
 	public static void init()
 	{
 		emf = Persistence.createEntityManagerFactory("progetto-siw-test-unit");
 		em = emf.createEntityManager(); 
-		repo = new AllievoJpaRepository(em);
+		repo = new JpaRepository(em,Allievo.class);
 	}
 	
 	@AfterAll
