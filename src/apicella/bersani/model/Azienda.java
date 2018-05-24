@@ -5,6 +5,9 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +15,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Persistence;
+
+import apicella.bersani.repository.ResponsabileRepository;
 
 @Entity
 public class Azienda {
@@ -34,6 +40,14 @@ public class Azienda {
 	@JoinColumn(name="azienda")
 	private List<Responsabile> responsabili;
 
+	
+	public Responsabile makeLogin() {
+		
+	}
+	
+	
+	
+	// Getter e setters - hashcode e equals
 	public Long getId() {
 		return id;
 	}

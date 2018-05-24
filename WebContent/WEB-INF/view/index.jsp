@@ -9,8 +9,37 @@
 <title>HOME</title>
 </head>
 <body>
-<span>PROVA</span>
-<a href="login">Login</a>
-
-</body>
+	<!-- HEADER -->
+	<div id="header-wrapper">
+		<div id="header" class="container">
+			<div id="menu">
+				<ul>
+					<li class="active"><a href="/">Homepage</a></li>
+					<li><a href="login">Login</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="banner" class="container">
+			<div class="title">
+				<h2>SIGECA</h2>
+				<span class="byline">Sistema per la Gestione di Centri e Attività</span>
+			</div>
+		</div>
+	</div>
+	
+	<div id="wrapper">
+		<div id="three-column" class="container">
+			<div class="title">
+				<h2>Homepage</h2>
+				<span class="byline">In questa pagina verranno descritti i casi d'uso e un collegamento per il login.</span>
+			</div>
+		</div>
+	</div>
+	
+	<!-- FOOTER -->
+	<div id="copyright" class="container">
+		<p>Sito realizzato come progetto per Sistemi informativi sul web 2017/2018 - Davide Bersani e Andrea Apicella</p>
+	</div>
+	
+	</body>
 </html>

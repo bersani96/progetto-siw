@@ -18,7 +18,7 @@ import apicella.bersani.repository.ResponsabileRepository;
 public class LoginController {
 
 	@RequestMapping("/processLogin")
-	public String processLogin(@ModelAttribute("responsabile") Responsabile responsabile, Model model)
+	public String processLogin(@ModelAttribute("azienda") Azienda azienda, @ModelAttribute("responsabile") Responsabile responsabile, Model model)
 	{
 		String next;
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("progetto-siw-unit");
@@ -32,8 +32,9 @@ public class LoginController {
 		
 		if(r!=null && r.checkLogin(responsabile.getPassword()))
 		{
-			model.addAttribute("responsabile",r);
-			next = "logged";
+			model.addAttribute("responsabile", r);
+			next= "logged";
+			
 		}else
 		{
 			model.addAttribute("error","Email o password errati.");
