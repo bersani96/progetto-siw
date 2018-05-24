@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,6 +29,18 @@ public class Attivita {
 
 	@ManyToMany(cascade= {CascadeType.PERSIST})
 	private List<Allievo> allievi;
+	
+	@ManyToOne
+	private Centro centro;
+
+
+	public Centro getCentri() {
+		return centro;
+	}
+
+	public void setCentri(Centro centri) {
+		this.centro = centri;
+	}
 
 	public Long getId() {
 		return id;
@@ -66,6 +79,7 @@ public class Attivita {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((allievi == null) ? 0 : allievi.hashCode());
+		result = prime * result + ((centro == null) ? 0 : centro.hashCode());
 		result = prime * result + ((dataOra == null) ? 0 : dataOra.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
@@ -84,6 +98,11 @@ public class Attivita {
 			if (other.allievi != null)
 				return false;
 		} else if (!allievi.equals(other.allievi))
+			return false;
+		if (centro == null) {
+			if (other.centro != null)
+				return false;
+		} else if (!centro.equals(other.centro))
 			return false;
 		if (dataOra == null) {
 			if (other.dataOra != null)

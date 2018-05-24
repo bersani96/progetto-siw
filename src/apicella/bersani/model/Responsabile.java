@@ -7,9 +7,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -27,7 +26,7 @@ public class Responsabile {
 	@Column(nullable=false)
 	private String password;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST})
+	@OneToOne(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST})
 	private Centro centro;
 	
 	public Centro getCentro() {

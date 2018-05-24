@@ -1,12 +1,14 @@
 package apicella.bersani.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,14 +23,29 @@ public class Allievo {
 	
 	@Column(nullable=false)
 	private String nome;
+	
 	@Column(nullable=false)
 	private String cognome;
+	
 	@Column(nullable=false, unique=true)
 	private String email;
+	
 	private String telefono;
+	
 	@Temporal(TemporalType.DATE)
 	private Date dataNascita;
+	
 	private String luogoNascita;
+	
+	@ManyToMany(mappedBy="allievi")
+	private List<Attivita> attivita;
+	
+	public List<Attivita> getAttivita() {
+		return attivita;
+	}
+	public void setAttivita(List<Attivita> attivita) {
+		this.attivita = attivita;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -75,6 +92,7 @@ public class Allievo {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((attivita == null) ? 0 : attivita.hashCode());
 		result = prime * result + ((cognome == null) ? 0 : cognome.hashCode());
 		result = prime * result + ((dataNascita == null) ? 0 : dataNascita.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
@@ -92,6 +110,11 @@ public class Allievo {
 		if (getClass() != obj.getClass())
 			return false;
 		Allievo other = (Allievo) obj;
+		if (attivita == null) {
+			if (other.attivita != null)
+				return false;
+		} else if (!attivita.equals(other.attivita))
+			return false;
 		if (cognome == null) {
 			if (other.cognome != null)
 				return false;

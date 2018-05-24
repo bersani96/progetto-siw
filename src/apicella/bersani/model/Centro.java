@@ -35,8 +35,7 @@ public class Centro {
 	@Column(nullable=false)
 	private Integer numMax;
 	
-	@OneToMany (cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
-	@JoinColumn(name="centro")
+	@OneToMany (cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy="centro")
 	private List<Attivita> attivita;
 	
 	
