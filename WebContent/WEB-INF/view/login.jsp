@@ -16,8 +16,9 @@
 		<div id="header" class="container">
 			<div id="menu">
 				<ul>
-					<li class="active"><a href="/">Login</a></li>
-					<li><a href="login">Login</a></li>
+					<li><a href="">Homepage</a></li>
+					<li class="active"><a href="login">Login</a></li>
+					<li><a href="nuova_pagina">Pagina</a></li>
 				</ul>
 			</div>
 		</div>
@@ -37,7 +38,7 @@
 			</div>
 			<br>
 			<span class="error-message">${error}</span>
-			<form:form action="processLogin" modelAttribute="responsabile">
+			<form:form action="makeLogin" modelAttribute="responsabile">
 				Email: <form:input path="email" />
 				<br><br>
 				Password: <form:password path="password" />

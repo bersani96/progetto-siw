@@ -6,7 +6,7 @@
 <head>
 <link rel="stylesheet" href="<c:url value="/resources/css/default.css"/>" >
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>HOME</title>
+<title>Pagina di prova</title>
 </head>
 <body>
 	<!-- HEADER -->
@@ -18,9 +18,9 @@
 		
 			<div id="menu">
 				<ul>
-					<li class="active"><a href="">Homepage</a></li>
+					<li><a href="">Homepage</a></li>
 					<li><a href="login">Login</a></li>
-					<li><a href="nuova_pagina">Pagina</a></li>
+					<li class="active"><a href="#">Pagina</a></li>
 				</ul>
 			</div>
 		</div>
@@ -35,8 +35,8 @@
 	<div id="wrapper">
 		<div id="three-column" class="container">
 			<div class="title">
-				<h2>Homepage</h2>
-				<span class="byline">In questa pagina verranno descritti i casi d'uso e un collegamento per il login.</span>
+				<h2>Prova</h2>
+				<span class="byline">Questa è una pagina di prova.</span>
 			</div>
 		</div>
 	</div>

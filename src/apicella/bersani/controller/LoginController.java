@@ -1,49 +1,38 @@
 package apicella.bersani.controller;
 
 import org.springframework.stereotype.Controller;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import apicella.bersani.model.Azienda;
 import apicella.bersani.model.Responsabile;
-import apicella.bersani.repository.ResponsabileRepository;
 
 @Controller
 public class LoginController {
 
-	@RequestMapping("/processLogin")
+	@RequestMapping("/makeLogin")
 	public String processLogin(@ModelAttribute("azienda") Azienda azienda, @ModelAttribute("responsabile") Responsabile responsabile, Model model)
 	{
 		String next;
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("progetto-siw-unit");
-		EntityManager em = emf.createEntityManager();
-		ResponsabileRepository repo = new ResponsabileRepository(em);
-		EntityTransaction tx = em.getTransaction();
+		Responsabile result = azienda.makeLogin(responsabile);
 		
-		tx.begin();
-		Responsabile r = repo.findByEmail(responsabile.getEmail());
-		tx.commit();
-		
-		if(r!=null && r.checkLogin(responsabile.getPassword()))
+		if(result!=null)
 		{
-			model.addAttribute("responsabile", r);
-			next= "logged";
-			
-		}else
-		{
-			model.addAttribute("error","Email o password errati.");
-			next = "login";
+			model.addAttribute("responsabileLoggato", result);
+			next = "index";
 		}
-		em.close();
-		emf.close();
+		else
+		{
+			next="login";
+			model.addAttribute("error", "Email o password errati");
+		}
 		
+		System.out.println("LoginController: vado a " + next);
+			
 		return next;
 		
 	}
+	
+	
 }

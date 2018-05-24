@@ -1,17 +1,14 @@
 package apicella.bersani;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import apicella.bersani.model.Azienda;
 import apicella.bersani.model.Responsabile;
-import apicella.bersani.repository.ResponsabileRepository;
 
 /**
  * Solo per testare la struttura del database.
@@ -20,7 +17,12 @@ import apicella.bersani.repository.ResponsabileRepository;
 public class Main {
 	
 	@RequestMapping("/")
-	protected String showHomePage(Model model) {
+	protected String showHomePage(@ModelAttribute("azienda") Azienda azienda, Model model) {
+		if(azienda==null)
+		{	azienda = new Azienda();
+			model.addAttribute("azienda", azienda);
+		}
+		
 		return "index";
 	}
 	
@@ -30,6 +32,11 @@ public class Main {
 		return "login";
 	}
 	
+	@RequestMapping("/nuova_pagina")
+	public String nuovaPagina(Model model) {
+		System.out.println(model.containsAttribute("responsabileLoggato"));
+		return "nuova_pagina";
+	}
 	
 
 }

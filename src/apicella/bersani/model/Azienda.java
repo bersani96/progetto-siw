@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,19 +34,39 @@ public class Azienda {
 	@OneToMany(cascade= {CascadeType.ALL})
 	private List<Allievo> allievi;
 	
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne(cascade= {CascadeType.ALL}, fetch=FetchType.LAZY)
 	private Responsabile responsabile;
 	
 	@OneToMany(cascade= {CascadeType.ALL})
 	@JoinColumn(name="azienda")
 	private List<Responsabile> responsabili;
+	
 
-	
-	public Responsabile makeLogin() {
+
+	public Responsabile makeLogin(Responsabile responsabileDaLoggare) {
+		System.out.println("Inizio makeLogin");
+		Responsabile result;
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("progetto-siw-unit");
+		EntityManager em = emf.createEntityManager();
+		ResponsabileRepository repo = new ResponsabileRepository(em);
+		EntityTransaction tx = em.getTransaction();
 		
+		tx.begin();
+		Responsabile r = repo.findByEmail(responsabileDaLoggare.getEmail());
+		tx.commit();
+		
+		if(r!=null && r.checkLogin(responsabileDaLoggare.getPassword()))
+		{
+			result = r;
+			
+		}else
+		{
+			result = null;
+		}
+		em.close();
+		emf.close();
+		return result;
 	}
-	
-	
 	
 	// Getter e setters - hashcode e equals
 	public Long getId() {
