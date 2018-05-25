@@ -12,15 +12,21 @@
 	<!-- HEADER -->
 	<div id="header-wrapper">
 		<div id="header" class="container">
-			<div id="logo">
-					<h1><a href="#">Benvenuto ${responsabileLoggato.email }</a></h1>
-				</div>
-		
+			<% if(session.getAttribute("responsabileLoggato") != null) { %>
+				<div id="logo">
+						<h1><a href="#">Benvenuto ${responsabileLoggato.email }</a></h1>
+					</div>
+			<% } %>
 			<div id="menu">
+			
 				<ul>
-					<li><a href="">Homepage</a></li>
-					<li><a href="login">Login</a></li>
-					<li class="active"><a href="#">Pagina</a></li>
+					<li class="active"><a href="">Homepage</a></li>
+					<% if(session.getAttribute("responsabileLoggato") == null) { %>
+						<li><a href="login">Login</a></li>
+					<% }else { %>
+						<li><a href="logout">Logout</a></li>
+					<%} %>
+					<li><a href="nuova_pagina">Pagina</a></li>
 				</ul>
 			</div>
 		</div>

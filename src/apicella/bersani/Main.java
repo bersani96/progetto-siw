@@ -1,10 +1,9 @@
 package apicella.bersani;
 
-import java.util.Map;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import apicella.bersani.model.Azienda;
@@ -17,10 +16,11 @@ import apicella.bersani.model.Responsabile;
 public class Main {
 	
 	@RequestMapping("/")
-	protected String showHomePage(@ModelAttribute("azienda") Azienda azienda, Model model) {
+	protected String showHomePage(HttpSession session) {
+		Azienda azienda = (Azienda) session.getAttribute("azienda");
 		if(azienda==null)
 		{	azienda = new Azienda();
-			model.addAttribute("azienda", azienda);
+			session.setAttribute("azienda", azienda);
 		}
 		
 		return "index";
@@ -34,7 +34,6 @@ public class Main {
 	
 	@RequestMapping("/nuova_pagina")
 	public String nuovaPagina(Model model) {
-		System.out.println(model.containsAttribute("responsabileLoggato"));
 		return "nuova_pagina";
 	}
 	
