@@ -5,6 +5,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="<c:url value="/resources/css/default.css"/>" >
+<link rel="stylesheet" href="<c:url value="/resources/css/extra.css"/>" >
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>HOME</title>
 </head>
@@ -14,13 +15,13 @@
 		<div id="header" class="container">
 			<% if(session.getAttribute("responsabileLoggato") != null) { %>
 				<div id="logo">
-						<h1><a href="#">Benvenuto ${responsabileLoggato.email }</a></h1>
+						<h1>Benvenuto <a href="#">${responsabileLoggato.email }</a></h1>
 					</div>
 			<% } %>
 			<div id="menu">
 			
 				<ul>
-					<li class="active"><a href="">Homepage</a></li>
+					<li class="active"><a href="progetto-siw">Homepage</a></li>
 					<% if(session.getAttribute("responsabileLoggato") == null) { %>
 						<li><a href="login">Login</a></li>
 					<% }else { %>

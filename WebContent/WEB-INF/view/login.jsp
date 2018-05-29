@@ -16,13 +16,13 @@
 		<div id="header" class="container">
 			<% if(session.getAttribute("responsabileLoggato") != null) { %>
 				<div id="logo">
-						<h1><a href="#">Benvenuto ${responsabileLoggato.email }</a></h1>
+						<h1>Benvenuto<a href="#">${responsabileLoggato.email }</a></h1>
 					</div>
 			<% } %>
 			<div id="menu">
 			
 				<ul>
-					<li class="active"><a href="">Homepage</a></li>
+					<li class="active"><a href="progetto-siw">Homepage</a></li>
 					<% if(session.getAttribute("responsabileLoggato") == null) { %>
 						<li><a href="login">Login</a></li>
 					<% }else { %>
@@ -47,14 +47,25 @@
 				<span class="byline">In questa pagina verranno descritti i casi d'uso e un collegamento per il login.</span>
 			</div>
 			<br>
-			<span class="error-message">${error}</span>
-			<form:form action="makeLogin" modelAttribute="responsabile">
+			
+			<form:form action="makeLogin" modelAttribute="responsabile" class="login-form">
+				<!--  messo dentro error-message per spostarlo insieme agli input -->
+				<span class="error-message">${error}</span>
+				
+				<!-- mettere email e pass allineate -->
+				
 				Email: <form:input path="email" />
+				
 				<br><br>
+				
 				Password: <form:password path="password" />
+				
 				<br><br>
+				
 				<!-- Modificare css come pulsante blu -->
-				<input type="submit" value="Login" />
+				
+				<!--  per far venire come pulsante in alto agg js per mandare comando di login -->
+				<input type="submit" value="Login" class="enter_button"/>
 			</form:form>	
 		</div>
 	</div>
