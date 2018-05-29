@@ -16,18 +16,23 @@
 		<div id="header" class="container">
 			<% if(session.getAttribute("responsabileLoggato") != null) { %>
 				<div id="logo">
-						<h1>Benvenuto<a href="#">${responsabileLoggato.email }</a></h1>
+						<h1>Benvenuto<a href="#">${responsabileLoggato.email}</a></h1>
 					</div>
 			<% } %>
 			<div id="menu">
 			
 				<ul>
-					<li class="active"><a href="progetto-siw">Homepage</a></li>
+					<li class="active"><a href="">Homepage</a></li>
 					<% if(session.getAttribute("responsabileLoggato") == null) { %>
 						<li><a href="login">Login</a></li>
 					<% }else { %>
 						<li><a href="logout">Logout</a></li>
 					<%} %>
+					<li><a href="firstCase">1CASO D'USO</a></li>
+					<li><a href="secondCase">2CASO D'USO</a></li>
+					<li><a href="thirthCase">3CASO D'USO</a></li>
+					<li><a href="fourthCase">4CASO D'USO</a></li>
+					<li><a href="fivethCase">5CASO D'USO</a></li>
 					<li><a href="nuova_pagina">Pagina</a></li>
 				</ul>
 			</div>
