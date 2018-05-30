@@ -1,3 +1,4 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,17 +8,19 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/default.css"/>" >
 <link rel="stylesheet" href="<c:url value="/resources/css/extra.css"/>" >
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>HOME</title>
+<title>Registrazione Allievo</title>
 </head>
 <body>
 	<!-- HEADER -->
 	<div id="header-wrapper">
 		<div id="header" class="container">
-			<% if(session.getAttribute("responsabileLoggato") != null) { %>
+		
 				<div id="logo">
-						<h1>Benvenuto <a href="#">${responsabileLoggato.email }</a></h1>
-					</div>
-			<% } %>
+							<h1>Benvenuto <a href="">Ragazzo</a></h1>
+							
+<%-- 						<h1>Benvenuto <a href="#">${responsabileLoggato.email }</a></h1> --%>
+				</div>
+					
 			<div id="menu">
 			
 				<ul>
@@ -33,22 +36,58 @@
 					<li><a href="fourthCase">4CASO D'USO</a></li>
 					<li><a href="fivethCase">5CASO D'USO</a></li>
 				</ul>
+				
 			</div>
+			
 		</div>
+		
 		<div id="banner" class="container">
 			<div class="title">
-				<h2>SIGECA</h2>
-				<span class="byline">Sistema per la Gestione di Centri e Attività</span>
+				<h2>Registrazione Allievo</h2>
+				<span class="byline">Registra un nuovo allievo in un'attività nello spazio sotto.</span>
 			</div>
 		</div>
 	</div>
 	
-	<div id="wrapper">
+		<div id="wrapper">
 		<div id="three-column" class="container">
 			<div class="title">
-				<h2>Homepage</h2>
+				<h2>Login</h2>
 				<span class="byline">In questa pagina verranno descritti i casi d'uso e un collegamento per il login.</span>
 			</div>
+			<br>
+			
+			<form:form action="makeRegistration" modelAttribute="allievo" class="">
+				
+				Nome: <form:input path="nome" />
+				<form:errors path="nome" cssClass="error" />
+				
+				Cognome: <form:input path="cognome" />
+				<form:errors path="cognome" cssClass="error" />
+				
+				<br><br>
+				
+				Email: <form:input path="email" />
+				<form:errors path="email" cssClass="error" />
+				
+				Telefono: <form:input path="telefono" />
+				<form:errors path="telefono" cssClass="error" />
+				
+				<br><br>
+				
+				Data di nascita: <form:input path="dataNascita" />
+	 			<form:errors path="dataNascita" cssClass="error" />
+				
+				Luogo di Nascita: <form:input path="luogoNascita" />
+				<form:errors path="luogoNascita" cssClass="error" />
+				
+				<br><br>
+				
+				<!-- Modificare css come pulsante blu -->
+				
+				<!--  per far venire come pulsante in alto agg js per mandare comando di login -->
+				<input type="submit" value="Registra" class=""/>
+			</form:form>	
 		</div>
 	</div>
 	

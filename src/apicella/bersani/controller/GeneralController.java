@@ -1,27 +1,76 @@
 package apicella.bersani.controller;
 
-import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+import apicella.bersani.model.Allievo;
 import apicella.bersani.model.Responsabile;
 
 @Controller
 public class GeneralController {
 	
-	@RequestMapping("/firstCase")
-	protected String prova1(HttpSession session, Model model) {
+	
+	 @InitBinder
+	    public void initBinder(WebDataBinder binder) {
+		 //per controllare datA nella form
+	        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+	        sdf.setLenient(true);
+	        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+	        
+	        //togliere spazi bianchi nelle string
+			StringTrimmerEditor stringTrimmerEditor= new StringTrimmerEditor(true);
+			binder.registerCustomEditor(String.class, stringTrimmerEditor);
+	    }
+	
+	@RequestMapping("/registrazioneAllievo")
+	public String prova1(HttpSession session, Model model) {
+		
 		
 		Responsabile r=(Responsabile) session.getAttribute("responsabileLoggato");
-		if (r==null) {
-			/* vedere perchè all'indirizzamento crasha*/
+		/* if (r==null) {
+			// vedere perchè all'indirizzamento crasha
 			return "login";
 		} else {
-		return "prova1";
+				model.addAttribute("allievo", new Allievo());
+				return "prova1";
+		} */
+		
+		model.addAttribute("allievo", new Allievo());
+		return "registrazioneAllievo";
+		
+	}
+	
+	@RequestMapping("/makeRegistration")
+	public String prova2(@Valid @ModelAttribute("allievo") Allievo allievo, BindingResult theBindingResult) {
+		
+		
+		System.out.println("Binding resul " + theBindingResult);
+		System.out.println("\n\n\n");
+		
+		if(theBindingResult.hasErrors()) {
+			return "registrazioneAllievo";
+		}else {
+		return "confermaRegistrazione";
 		}
 	}
+	
+	
+	
+	
 	
 	@RequestMapping("/secondCase")
 	public String prova2(HttpSession session, Model model) {

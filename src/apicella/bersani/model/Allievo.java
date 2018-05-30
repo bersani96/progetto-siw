@@ -12,6 +12,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+
+
 
 @Entity
 @NamedQuery(name = "findAllAllievi", query = "FROM Allievo a")
@@ -21,73 +26,98 @@ public class Allievo {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@NotNull(message="obbligatorio")
 	@Column(nullable=false)
 	private String nome;
 	
+	@NotNull(message="obbligatorio")
 	@Column(nullable=false)
 	private String cognome;
 	
+	@NotNull(message="obbligatorio")
 	@Column(nullable=false, unique=true)
 	private String email;
 	
+	@NotNull(message="obbligatorio")
+	@Pattern(regexp="^[0-9]{10}", message="inserire 10 numeri")
 	private String telefono;
 	
+	@NotNull(message="obbligatorio")
 	@Temporal(TemporalType.DATE)
 	private Date dataNascita;
 	
+	@NotNull(message="obbligatorio")
 	private String luogoNascita;
 	
 	@ManyToMany(mappedBy="allievi")
 	private List<Attivita> attivita;
 	
+	
 	public List<Attivita> getAttivita() {
 		return attivita;
 	}
+	
 	public void setAttivita(List<Attivita> attivita) {
 		this.attivita = attivita;
 	}
+	
 	public Long getId() {
 		return id;
 	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public String getCognome() {
 		return cognome;
 	}
+	
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
+	
 	public String getEmail() {
 		return email;
 	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public String getTelefono() {
 		return telefono;
 	}
+	
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	
 	public Date getDataNascita() {
 		return dataNascita;
 	}
+	
 	public void setDataNascita(Date dataNascita) {
 		this.dataNascita = dataNascita;
 	}
+	
 	public String getLuogoNascita() {
 		return luogoNascita;
 	}
+	
 	public void setLuogoNascita(String luogoNascita) {
 		this.luogoNascita = luogoNascita;
 	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

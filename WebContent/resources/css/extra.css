@@ -14,3 +14,7 @@ span.error-message {
 	font-size: 0.8em;
 	color: rgba(255,255,255,0.80);
 }
+
+.error {
+	text-color:red;
+}

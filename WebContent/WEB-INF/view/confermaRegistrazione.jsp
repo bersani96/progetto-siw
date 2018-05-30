@@ -46,8 +46,16 @@
 	<div id="wrapper">
 		<div id="three-column" class="container">
 			<div class="title">
-				<h2>Homepage</h2>
-				<span class="byline">In questa pagina verranno descritti i casi d'uso e un collegamento per il login.</span>
+				<h2>Registrazione completata</h2>
+				<span class="byline">Complimenti la registrazione è stata effettuata con successo.</span>
+				<ul>
+					<li>${allievo.nome}</li>
+					<li>${allievo.cognome}</li>
+					<li>${allievo.email}</li>
+					<li>${allievo.telefono}</li>
+					<li>${allievo.dataNascita}</li>
+					<li>${allievo.luogoNascita}</li>
+				</ul>
 			</div>
 		</div>
 	</div>
