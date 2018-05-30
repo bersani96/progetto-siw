@@ -3,6 +3,10 @@ package apicella.bersani.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -40,11 +44,11 @@ public class GeneralController {
 
 		Responsabile r=(Responsabile) session.getAttribute("responsabileLoggato");
 
-		if (r==null) {
+		/*if (r==null) {
 			model.addAttribute("responsabile", new Responsabile());
 			return "login";
-		}
-
+		}*/
+		
 		model.addAttribute("allievo", new Allievo());
 		return "registrazioneAllievo";
 
@@ -60,8 +64,24 @@ public class GeneralController {
 		if(theBindingResult.hasErrors()) {
 			return "registrazioneAllievo";
 		}else {
-			return "confermaRegistrazione";
+			/*EntityManagerFactory emf = Persistence.createEntityManagerFactory("progetto-siw-unit");
+			EntityManager em = emf.createEntityManager(); 
+			EntityTransaction tx = em.getTransaction();
+			
+			tx.begin();
+			
+			em.persist(allievo);
+			
+			tx.commit();
+			if(em!=null)
+				em.close();
+			if(emf!=null)
+				emf.close();*/
+			
+		return "confermaRegistrazione";
 		}
+		
+		
 	}
 
 

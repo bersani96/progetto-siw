@@ -49,12 +49,12 @@
 				<h2>Registrazione completata</h2>
 				<span class="byline">Complimenti la registrazione è stata effettuata con successo.</span>
 				<ul>
-					<li>${allievo.nome}</li>
-					<li>${allievo.cognome}</li>
-					<li>${allievo.email}</li>
-					<li>${allievo.telefono}</li>
-					<li>${allievo.dataNascita}</li>
-					<li>${allievo.luogoNascita}</li>
+					<li>Nome: ${allievo.nome}</li>
+					<li>Cognome: ${allievo.cognome}</li>
+					<li>Email: ${allievo.email}</li>
+					<li>Telefono: ${allievo.telefono}</li>
+					<li>Data di Nascita: ${allievo.dataNascita}</li>
+					<li>Luogo di Nascita: ${allievo.luogoNascita}</li>
 				</ul>
 			</div>
 		</div>
