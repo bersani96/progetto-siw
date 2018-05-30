@@ -177,6 +177,17 @@ public class Allievo {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Nome: " + nome + "\nCognome=" + cognome + "\nEmail=" + email + "\nTelefono=" + telefono
+				+ "\nDataNascita=" + dataNascita + "\nLuogoNascita=" + luogoNascita;
+	}
+	public String toHtmlString() {
+		// For html useage
+		return toString().replaceAll("\\n", "<br>");
+	}
+	
+	
 
 	
 }

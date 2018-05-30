@@ -15,6 +15,16 @@ span.error-message {
 	color: rgba(255,255,255,0.80);
 }
 
+
 .error {
 	text-color:red;
+}
+
+div.content {
+	width: 100%;
+	text-align: center;
+}
+
+span.simple_text {
+	color: #000000;
 }

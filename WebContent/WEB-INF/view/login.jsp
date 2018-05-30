@@ -22,9 +22,9 @@
 			<div id="menu">
 			
 				<ul>
-					<li class="active"><a href="">Homepage</a></li>
+					<li><a href="index">Homepage</a></li>
 					<% if(session.getAttribute("responsabileLoggato") == null) { %>
-						<li><a href="login">Login</a></li>
+						<li class="active"><a href="login">Login</a></li>
 					<% }else { %>
 						<li><a href="logout">Logout</a></li>
 					<%} %>

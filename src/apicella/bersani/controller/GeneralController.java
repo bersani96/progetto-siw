@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 import apicella.bersani.model.Allievo;
 import apicella.bersani.model.Responsabile;
 
@@ -39,15 +38,12 @@ public class GeneralController {
 	@RequestMapping("/registrazioneAllievo")
 	public String prova1(HttpSession session, Model model) {
 		
-		
 		Responsabile r=(Responsabile) session.getAttribute("responsabileLoggato");
-		/* if (r==null) {
-			// vedere perchè all'indirizzamento crasha
+
+		if (r==null) {
+			model.addAttribute("responsabile", new Responsabile());
 			return "login";
-		} else {
-				model.addAttribute("allievo", new Allievo());
-				return "prova1";
-		} */
+		}
 		
 		model.addAttribute("allievo", new Allievo());
 		return "registrazioneAllievo";
@@ -77,9 +73,10 @@ public class GeneralController {
 		
 		Responsabile r=(Responsabile) session.getAttribute("responsabileLoggato");
 		if (r==null) {
+			model.addAttribute("responsabile", new Responsabile());
 			return "login";
 		}
-		return "prova2";
+		return "controlloAllievoEsistente";
 		
 	}
 	
@@ -88,6 +85,7 @@ public class GeneralController {
 		
 		Responsabile r=(Responsabile) session.getAttribute("responsabileLoggato");
 		if (r==null) {
+			model.addAttribute("responsabile", new Responsabile());
 			return "login";
 		}
 		return "prova3";
@@ -99,6 +97,7 @@ public class GeneralController {
 		
 		Responsabile r=(Responsabile) session.getAttribute("responsabileLoggato");
 		if (r==null) {
+			model.addAttribute("responsabile", new Responsabile());
 			return "login";
 		}
 		return "prova4";
@@ -110,6 +109,7 @@ public class GeneralController {
 		
 		Responsabile r=(Responsabile) session.getAttribute("responsabileLoggato");
 		if (r==null) {
+			model.addAttribute("responsabile", new Responsabile());
 			return "login";
 		}
 		return "prova5";

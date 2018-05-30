@@ -4,7 +4,7 @@ CASI D'USO - PROGETTO SIW 2017/2018 BERSANI APICELLA
 	2. Il responsabile inserisce nel sistema i dati
 	3. Il sistema registra i dati dell'allievo.
 
-2) UC2: Ricerca di uno studente
+2) UC2: Ricerca di uno studente (fatto)
 	1. Il responsabile inserisce l'email di uno studente
 	2. Il sistema comunica al resposanbile se l'allievo è già registrato al sistema
 	

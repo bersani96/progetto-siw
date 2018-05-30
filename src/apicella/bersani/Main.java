@@ -15,7 +15,7 @@ import apicella.bersani.model.Responsabile;
 @Controller
 public class Main {
 	
-	@RequestMapping("/")
+	@RequestMapping(value= {"/","/index"})
 	protected String showHomePage(HttpSession session) {
 		Azienda azienda = (Azienda) session.getAttribute("azienda");
 		if(azienda==null)
