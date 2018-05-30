@@ -24,13 +24,13 @@
 			<div id="menu">
 			
 				<ul>
-					<li class="active"><a href="">Homepage</a></li>
+					<li><a href="">Homepage</a></li>
 					<% if(session.getAttribute("responsabileLoggato") == null) { %>
 						<li><a href="login">Login</a></li>
 					<% }else { %>
 						<li><a href="logout">Logout</a></li>
 					<%} %>
-					<li><a href="registrazioneAllievo">1CASO D'USO</a></li>
+					<li class="active"><a href="registrazioneAllievo">1CASO D'USO</a></li>
 					<li><a href="secondCase">2CASO D'USO</a></li>
 					<li><a href="thirthCase">3CASO D'USO</a></li>
 					<li><a href="fourthCase">4CASO D'USO</a></li>
@@ -58,27 +58,27 @@
 			<br>
 			
 			<form:form action="makeRegistration" modelAttribute="allievo" class="">
-				
-				Nome: <form:input path="nome" />
+				* I campi contrassegnati da questo simbolo sono obbligatori.
+				Nome*: <form:input path="nome" />
 				<form:errors path="nome" cssClass="error" />
 				
-				Cognome: <form:input path="cognome" />
+				Cognome*: <form:input path="cognome" />
 				<form:errors path="cognome" cssClass="error" />
 				
 				<br><br>
 				
-				Email: <form:input path="email" />
+				Email*: <form:input path="email" />
 				<form:errors path="email" cssClass="error" />
 				
-				Telefono: <form:input path="telefono" />
+				Telefono*: <form:input path="telefono" />
 				<form:errors path="telefono" cssClass="error" />
 				
 				<br><br>
 				
-				Data di nascita: <form:input path="dataNascita" />
+				Data di nascita* (MM-GG-AAAA): <form:input path="dataNascita" />
 	 			<form:errors path="dataNascita" cssClass="error" />
 				
-				Luogo di Nascita: <form:input path="luogoNascita" />
+				Luogo di Nascita*: <form:input path="luogoNascita" />
 				<form:errors path="luogoNascita" cssClass="error" />
 				
 				<br><br>

@@ -1,0 +1,5 @@
+DA FARE:
+	- Spostare voci dal menu, troppo ingombranti (secondo me).
+	- Formato data da utilizzare?
+	- Salvataggio allievo nel db.
+	- Decidere dove posizinare il titolo della pagina (vedi differenze tra pagine di uc1 e uc2)
